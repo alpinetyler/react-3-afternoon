@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   updatePost( id, text) {
-    axios.put(`${baseUrl}/posts?id=${id}`, { text })
+    axios.put(`${baseUrl}/posts?id=${id}`, {text})
     .then(results =>{
       this.setState({posts: results.data})
     })
@@ -55,7 +55,7 @@ class App extends Component {
   }
   //created earlier
   createPost(text) {
-    axios.post(`${baseUrl}/posts`, text)
+    axios.post(`${baseUrl}/posts`, {text})
     .then(results => {
       this.setState({ posts: results.data});
     })
