@@ -23,6 +23,7 @@ class App extends Component {
     this.createPost = this.createPost.bind( this );
   }
   
+  //already here
   componentDidMount() {
     axios.get(`${baseUrl}/posts`)
     .then(results => {
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   updatePost( id, text) {
-    axios.put(`${baseUrl}/post?id=${id}`, { text })
+    axios.put(`${baseUrl}/posts?id=${id}`, { text })
     .then(results =>{
       this.setState({posts: results.data})
     })
@@ -44,7 +45,7 @@ class App extends Component {
   }
 
   deletePost(id) {
-    axios.delete(`${baseUrl}/post?id=${id}`)
+    axios.delete(`${baseUrl}/posts?id=${id}`)
     .then(results => {
       this.setState({posts: results.data})
     })
@@ -52,9 +53,15 @@ class App extends Component {
       console.log(err)
     })
   }
-
-  createPost() {
-
+  //created earlier
+  createPost(text) {
+    axios.post(`${baseUrl}/posts`, { text })
+    .then(results => {
+      this.setState({ posts: results.data});
+    });
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {
@@ -66,7 +73,7 @@ class App extends Component {
 
         <section className="App__content">
 
-          <Compose />
+          <Compose  createPostFn= {this.createPost }/>
           {
             posts.map(post =>(
               <post key={post.id}

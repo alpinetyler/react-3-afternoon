@@ -56,8 +56,7 @@ export default class Post extends Component {
     const { editing, showMasterMenu } = this.state;
     const {text, date, id, deletePostFn } = this.props;
     
-
-
+    //to see if props are being passed correctly
     console.log(this.props)
 
     return (
