@@ -55,10 +55,10 @@ class App extends Component {
   }
   //created earlier
   createPost(text) {
-    axios.post(`${baseUrl}/posts`, { text })
+    axios.post(`${baseUrl}/posts`, text)
     .then(results => {
       this.setState({ posts: results.data});
-    });
+    })
     .catch(err => {
       console.log(err)
     })

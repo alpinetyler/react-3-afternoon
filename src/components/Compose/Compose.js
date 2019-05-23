@@ -22,7 +22,7 @@ export default class Compose extends Component {
 
   //created after server went down
   createPost() {
-    const { text} = this.state;
+    const { text } = this.state;
     const { createPostFn } = this.props;
 
     createPostFn( text );
